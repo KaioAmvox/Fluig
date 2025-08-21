@@ -63,11 +63,7 @@
       <!-- Formulario 02 -->
       <div id="step-2" class="form-step" style="display: none;">
         <h3>Local de destino</h3>
-        <div class="form-group">
-          <label class="required">Empresa</label>
-          <input type="hidden" id="codEmpresa" name="codEmpresa">
-          <input type="text" id="filterEmpresa" name="filterEmpresa" class="form-control">
-        </div>
+       
         
          <div class="form-group">
               <label class="required">Empresa</label>

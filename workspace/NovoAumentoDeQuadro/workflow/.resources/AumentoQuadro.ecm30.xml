@@ -155,8 +155,8 @@
         <version>1</version>
         <sequence>7</sequence>
       </processStatePK>
-      <stateName>Validação Direção</stateName>
-      <stateDescription>Validação Direção</stateDescription>
+      <stateName>Validação Diretoria</stateName>
+      <stateDescription>Validação Diretoria</stateDescription>
       <instruction></instruction>
       <deadlineTime>0</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
@@ -360,7 +360,7 @@
       <width>801</width>
       <positionX>40</positionX>
       <positionY>266</positionY>
-      <stateName>Direção</stateName>
+      <stateName>Diretoria</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
       <swimLanePK>
