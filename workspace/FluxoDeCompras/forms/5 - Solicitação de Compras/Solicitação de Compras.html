@@ -1,0 +1,301 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+	
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="main.js" charset="utf-8"></script>
+	<script type="text/javascript" src="zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>	
+    
+    <link type="text/css" rel="stylesheet" href="/public_archives/resources/css/ligth_blue_theme.css" />
+</head>
+<body>
+<div class="fluig-style-guide">
+	<div class="">
+		<form name="form" role="form">
+			
+			<!-- INICIO CAMPOS AUXILIARES -->
+					
+			<input type="hidden" id="txtEmailSolicitante" name="txtEmailSolicitante">
+			<input type="hidden" id="txtCodSolicitante" name="txtCodSolicitante">
+			<input type="hidden" id="txtAtividade" name="txtAtividade">
+								
+			<!-- FIM CAMPOS AUXILIARES -->
+			
+			<section class="col-md-12 fs-xs-padding">
+				<div class="panel panel-default fsc-panel-custom fsc-border-custom">
+					<div class="panel-heading fsc-heading fs-md-padding-horizontal">
+						<h5>Solicitação de Compras Protheus</h5>
+					</div>
+					<div class="panel-body fs-xs-padding">
+						<div class="container-fluid">
+							<section class="row">
+								<div class="form-group col-md-12 col-xs-12 fs-xs-padding-horizontal">
+									<fieldset>
+										<legend> Cabeçalho </legend>
+									</fieldset>
+								</div>
+							</section>
+							
+							<section class="row">
+								<div class="form-group col-sm-5 fs-xs-padding-horizontal">
+									<label>Solicitante Fluig</label>
+									<input type="text" class="form-control" id="txtNomeSolicitante" name="txtNomeSolicitante" readonly>
+								</div>
+								<div class="col-sm-3 fs-xs-padding-horizontal">
+									<label>Data Solicitação</label>
+									<input type="date" class="form-control" id="txtDtSolicitacao" name="txtDtSolicitacao" readonly>
+								</div>
+								<div class="form-group col-sm-2 fs-xs-padding-horizontal">
+									<label>Nº Fluig</label>
+									<input type="text" class="form-control" id="txtNumFluig" name="txtNumFluig" readonly>
+								</div>
+								<div class="form-group col-sm-2 fs-xs-padding-horizontal">
+									<label>Nº Protheus</label>
+									<input type="text" class="form-control" id="txtNumSC" name="txtNumSC" readonly>
+								</div>
+							</section>
+							
+							<section class="row">
+								<div class="form-group col-sm-6 fs-xs-padding-horizontal" style="display:none">
+									<label class="required">Usuário Protheus</label>
+									<input type="hidden" id="usuarioProtheus" name="usuarioProtheus">
+									<input
+									    type="zoom"
+									    id = "zoomUsuarioProtheus"
+									    name="zoomUsuarioProtheus"
+									    data-zoom="{
+									        'displayKey':'nomeUsuario',
+									        'datasetId':'dsUsuariosAtivos_Protheus',
+									        'placeholder':'Selecione...',
+									        'fields':[
+									            {
+									               'field':'idUsuario',
+									               'label':'Código'
+									            },{
+									               'field':'nomeUsuario',
+									               'label':'Nome',
+									               'standard':'true'
+									            }
+									        ]
+									     }"
+									/>
+								</div>
+								
+								<div class="form-group col-sm-5 fs-xs-padding-horizontal">
+									<label class="required">Filial</label>
+									<input type="hidden" id="codFilial" name="codFilial">
+									<input
+									    type="zoom"
+									    id = "zoomFilial"
+									    name="zoomFilial"
+									    data-zoom="{
+									        'displayKey':'ZOOMDESCRICAO',
+									        'datasetId':'dsListaFiliais_Protheus',
+									        'placeholder':'Selecione...',
+									        'fields':[
+									            {
+									               'field':'ZOOMDESCRICAO',
+									               'label':'Descrição',
+									               'standard':'true'
+									            }
+									        ]
+									     }"
+									/>
+								</div>
+							</section>
+							<section class="row">
+								<div class="form-group col-sm-3 fs-xs-padding-horizontal">
+									<label>Valor Total R$</label>
+									<input type="text" class="form-control" id="txtTotalPedido" name="txtTotalPedido" readonly>
+								</div>
+							</section>
+						
+						</div>
+					</div>
+					<div class="panel-footer fs-xs-padding fs-xl-margin-top fs-no-border"></div>
+				</div>
+			</section>
+			
+			<section class="col-md-12 fs-xs-padding">
+				<div class="panel panel-default fsc-panel-custom fsc-border-custom">
+					<div class="panel-heading fsc-heading fs-md-padding-horizontal">
+						<h5>Itens da Solicitação</h5>
+					</div>
+					<div class="panel-body fs-xs-padding">
+						<div class="container-fluid">
+							<section class="row">
+								<table tablename="tb_produtos" class="table table-hover fsc-table" noaddbutton="true"  nodeletebutton="true" id="tb_produtos" style="table-layout: fixed;">
+									<thead>
+										<tr>
+											<td width="5%" class="hidden-delete"></td>
+											<td width="95%" ></td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr> 
+											<td class="hidden-delete" style="text-align: center; vertical-align: middle;">
+												<div onclick="removeRow(this)" title="Remover item">
+													<i class="flaticon flaticon-trash icon-md fs-cursor-pointer"></i>
+												</div>
+											</td>
+											
+											<td>
+												<div class="row">													
+													<div class="col-sm-5 fs-xs-padding-horizontal">
+														<label class="required">Item</label>
+														<input type="hidden" class="itens-tabela" id="codProduto" name="codProduto">
+														<input
+														    type="zoom"
+														    id = "zoomProduto"
+														    name="zoomProduto"
+														    data-zoom="{
+														        'displayKey':'ZOOMDESCRICAO',
+														        'datasetId':'dsProdutos_Protheus',
+														        'placeholder':'Selecione',
+														        'fields':[
+														            {
+														               'field':'ZOOMDESCRICAO',
+														               'label':'Descrição',
+														              'standard':'true'
+														            },
+														            {
+														            	'field':'codProduto',
+														            	'label':'Código',
+														            	'visible':'false'
+														            },
+														            {
+														            	'field':'unidadeMedida',
+														            	'label':'UN',
+														            	'visible':'false'
+														            },
+														            {
+														            	'field':'descUnidadeMedida',
+														            	'label':'Unidade',
+														            	'visible':'false'
+														            },
+														            {
+														            	'field':'ultimoPreco',
+														            	'label':'Ultimo Preço',
+														            	'visible':'false'
+														            },
+														            {
+														            	'field':'armazemPadrao',
+														            	'label':'Armazém',
+														            	'visible':'false'
+														            }
+														        ]
+														     }"
+														/>
+													</div>
+													<div class="col-sm-1 fs-xs-padding-horizontal">
+														<label>Unidade</label>
+														<input type="text" class="form-control" id="unidadeMedida" name="unidadeMedida" readonly>
+													</div>
+													<div class="col-sm-2 fs-xs-padding-horizontal">
+														<label class="required">Quantidade</label>
+														<input type="text" class="form-control" id="txtQuantidade" name="txtQuantidade" oninput="mascaraMoeda(event);" onblur="calcularTotalItem(this);">
+													</div>	
+													<div class="col-sm-2 fs-xs-padding-horizontal">
+														<label class="required">Preço Sugerido R$</label>
+														<input type="text" class="form-control" id="txtValorUnitario" name="txtValorUnitario" oninput="mascaraMoeda(event);" onblur="calcularTotalItem(this);">
+													</div>
+													<div class="col-sm-2 fs-xs-padding-horizontal">
+														<label>Valor Total R$</label>
+														<input type="text" class="form-control" id="txtValorTotal" name="txtValorTotal" readonly>
+													</div>												
+												</div>
+												
+												<div class="row">
+													<div class="col-sm-4 fs-xs-padding-horizontal">
+														<label class="required">Armazém</label>
+														<input type="hidden" id="codArmazem" name="codArmazem">
+														<input
+														    type="zoom"
+														    id = "zoomArmazem"
+														    name="zoomArmazem"
+														    data-zoom="{
+														        'displayKey':'ZOOMDESCRICAO',
+														        'datasetId':'dsArmazens_Protheus',
+														        'placeholder':'Selecione...',
+														        'fields':[
+														            {
+														              'field':'ZOOMDESCRICAO',
+														              'label':'Descrição',
+														              'standard':'true'
+														            }
+														        ]
+														     }"
+														/>
+													</div>
+													<div class="col-sm-5 fs-xs-padding-horizontal">
+														<label class="required">Centro de Custo</label>
+														<input type="hidden" id="codCentroCusto" name="codCentroCusto">
+														<input
+														    type="zoom"
+														    id = "zoomCentroCusto"
+														    name="zoomCentroCusto"
+														    data-zoom="{
+														        'displayKey':'ZOOMDESCRICAO',
+														        'datasetId':'dsCentroDeCusto_Protheus',
+														        'placeholder':'Selecione...',
+														        'fields':[
+														            {
+														               'field':'ZOOMDESCRICAO',
+														               'label':'Descrição',
+														               'standard':'true'
+														            }
+														        ]
+														     }"
+														/>
+													</div>
+													<div class="col-sm-2 fs-xs-padding-horizontal">
+														<label class="required">Data Necessidade</label>
+														<input type="date" class="form-control" id="dtEntrega" name="dtEntrega">
+													</div>
+												</div>
+												
+												<div class="row">
+													<!-- <div class="col-sm-6 fs-xs-padding-horizontal">
+														<label class="required">Necessidade</label>
+														<textarea rows="3" class="form-control" id="txtNecessidade" name="txtNecessidade" maxlength="254"></textarea>
+													</div> -->
+													<div class="col-sm-6 fs-xs-padding-horizontal">
+														<label class="required">Observação</label>
+														<textarea rows="2" class="form-control" id="obsItem" name="obsItem" maxlength="254" oninput="tratarEntrada(event)"></textarea>
+													</div>
+												</div>																				
+											</td>																		
+										</tr>
+									</tbody>
+								</table>
+							</section>
+							
+							<section class='row'>
+								<div class="form-group col-sm-2 fs-xs-padding-horizontal">
+									<button class="btn btn-primary fs-full-width" id="btnAddProduto" onclick="addItem()">Incluir Item</button>
+								</div>
+							</section>
+							
+							<!-- <section class='row'>
+								<div class="form-group col-sm-4 col-sm-offset-8 fs-xs-padding-horizontal">
+									<label>Valor Totla R$</label>
+									<input type="text" class="form-control" id="txtTotalPedido" name="txtTotalPedido" readonly>
+								</div>
+							</section> -->
+						</div>
+					</div>
+					<div class="panel-footer fs-xs-padding fs-xl-margin-top fs-no-border"></div>
+				</div>
+			</section>
+		</form>
+	</div>
+</div>
+</body>
+</html>
