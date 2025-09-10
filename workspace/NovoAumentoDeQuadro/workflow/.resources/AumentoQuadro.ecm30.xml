@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Aumento_Quadro</processId>
-      <version>4</version>
+      <version>3</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>0</formId>
@@ -106,7 +106,7 @@
       <stateName>RH-Validação</stateName>
       <stateDescription>RH-Validação</stateDescription>
       <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
+      <deadlineTime>172800</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -127,7 +127,7 @@
       <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
       <positionX>230</positionX>
-      <positionY>160</positionY>
+      <positionY>170</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -135,7 +135,7 @@
       <allowanceManagerTime>0</allowanceManagerTime>
       <frequenceManagerTime>0</frequenceManagerTime>
       <inhibitTransfer>false</inhibitTransfer>
-      <periodId></periodId>
+      <periodId>OPERAÇÃO</periodId>
       <stateType>0</stateType>
       <bpmnType>80</bpmnType>
       <signalId>0</signalId>
@@ -158,7 +158,7 @@
       <stateName>Validação Diretoria</stateName>
       <stateDescription>Validação Diretoria</stateDescription>
       <instruction></instruction>
-      <deadlineTime>0</deadlineTime>
+      <deadlineTime>259200</deadlineTime>
       <deadlineFieldName></deadlineFieldName>
       <joint>false</joint>
       <agreementPercentage>0</agreementPercentage>
@@ -229,8 +229,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>292</positionX>
-      <positionY>430</positionY>
+      <positionX>265</positionX>
+      <positionY>440</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -373,19 +373,7 @@
   </list>
   <list/>
   <list/>
-  <list>
-    <ProcessLinkBend>
-      <processLinkBendPK>
-        <companyId>1</companyId>
-        <processId>Aumento_Quadro</processId>
-        <version>4</version>
-        <linkSequence>6</linkSequence>
-        <bendSequence>1</bendSequence>
-      </processLinkBendPK>
-      <positionX>176</positionX>
-      <positionY>114</positionY>
-    </ProcessLinkBend>
-  </list>
+  <list/>
   <list/>
   <list/>
   <list/>
@@ -396,7 +384,57 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Aumento_Quadro</processId>
-      <processVersion>4</processVersion>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Aumento_Quadro</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Aumento_Quadro</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Aumento_Quadro</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Aumento_Quadro</processId>
+      <processVersion>3</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>Aumento_Quadro</processId>
+      <processVersion>3</processVersion>
       <stateSequence>7</stateSequence>
       <appKey>approval</appKey>
       <appField>title</appField>
@@ -406,7 +444,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Aumento_Quadro</processId>
-      <processVersion>4</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>7</stateSequence>
       <appKey>approval</appKey>
       <appField>description</appField>
@@ -416,7 +454,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Aumento_Quadro</processId>
-      <processVersion>4</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>7</stateSequence>
       <appKey>approval</appKey>
       <appField>highlight</appField>
@@ -426,7 +464,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Aumento_Quadro</processId>
-      <processVersion>4</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>7</stateSequence>
       <appKey>approval</appKey>
       <appField>approve</appField>
@@ -436,7 +474,7 @@
       <id>0</id>
       <tenantId>0</tenantId>
       <processId>Aumento_Quadro</processId>
-      <processVersion>4</processVersion>
+      <processVersion>3</processVersion>
       <stateSequence>7</stateSequence>
       <appKey>approval</appKey>
       <appField>reject</appField>

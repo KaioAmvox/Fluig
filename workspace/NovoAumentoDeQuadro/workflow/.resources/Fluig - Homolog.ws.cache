@@ -46,9 +46,12 @@
   </void>
   <void method="put">
    <string>expediente</string>
-   <array class="java.lang.String" length="1">
+   <array class="java.lang.String" length="2">
     <void index="0">
      <string>Default</string>
+    </void>
+    <void index="1">
+     <string>OPERAÇÃO</string>
     </void>
    </array>
   </void>
