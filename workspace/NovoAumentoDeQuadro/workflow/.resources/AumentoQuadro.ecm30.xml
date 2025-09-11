@@ -340,10 +340,10 @@
     </SwimLane>
     <SwimLane>
       <color>C0C0C0</color>
-      <height>118</height>
+      <height>119</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>148</positionY>
+      <positionY>266</positionY>
       <stateName>RH</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
@@ -356,10 +356,10 @@
     </SwimLane>
     <SwimLane>
       <color>82b0b7</color>
-      <height>119</height>
+      <height>118</height>
       <width>801</width>
       <positionX>40</positionX>
-      <positionY>266</positionY>
+      <positionY>148</positionY>
       <stateName>Diretoria</stateName>
       <type>2</type>
       <parentSequence>1</parentSequence>
